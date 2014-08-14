@@ -1,0 +1,110 @@
+<html>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.19/firebase.js"></script>
+	<script type="text/javascript" src="login.js"></script>
+<head>
+	<!-- start login page -->
+	<title> VolunTrapp </title>
+	<style>
+		#logo{
+			padding-top: 30px;
+			padding-left: 10px;
+		}
+		#firstpageoflogin{
+			background-color: #CCFFFF;
+		}
+	
+		
+		</style>
+</head>
+
+<body style="height:800px;width:800px">
+	<div data-role = "page" id = "firstPageoflogin" >
+		
+		<h1><img src = "http://wowtrending.com/wp-content/uploads/cute-dog-pictures-2.jpg" id = "logo" width="150" height="150">VolunTrapp</h1>
+		<form>
+		<label for="text-6"></label>
+     	<input type="text" name="text-6" id="Username" value="" placeholder="username">
+     	<input type="password" id="Password" name="pwd" placeholder="password">
+		</form>
+		<div data-role = "main">
+			<a class = "ui-btn" id="LoginButton">Login</a>
+			<!-- <button id="LoginButton">login</button> -->
+		</div>
+
+		<div data-role = "main">
+				<a class = "ui-btn" href="#pagecreateaccount">Create An Account</a>
+			</div>
+		</div>
+	<!-- end of login page  -->
+	<!-- start of create an account page  -->
+		<div data-role = "page" id = "pagecreateaccount">
+			<div data-role = "header">
+				<h1>Create an Account</h1>
+			</div>
+			<form>
+     			<label for="text-1">First Name:</label>
+     			<input type="text" name="text-1" id="FirstName" value="">
+     			<label for="text-2">Last Name:</label>
+     			<input type="text" name="text-2" id="LastName" value="">
+     			<label for="text-3">Username:</label>
+     			<input type="text" name="text-3" id="UserName" value="">
+     			<label for="text-4">Password:</label>
+     			<input type="text" name="text-4" id="pw" value="">
+     			<label for="text-5">Total Goal Hours:</label>
+     			<input type="text" name="text-5" id="Goal" value="">
+     		</form>
+     		<div data-role = "main">
+				<a class = "ui-btn" id="SubmitButton">Submit</a>
+			</div>
+	</div>
+	<!-- end of create an account page  -->
+	<!-- Start of homepage -->
+		<div data-role = "page" id = "firstPageofhomepage" onload = "showhours()">
+			<div data-role = "header">
+				<h1> The Amazing Dashboard </h1>
+			</div>	
+			<div>
+				<p id = "TotHours"></p>
+			</div>
+			<div data-role = "footer">
+				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
+			</div>
+		</div>
+	<!-- end of homepage -->
+	<!-- Start of add event page -->
+		<div data-role = "page" id = "pageaddvolunteerevent">
+			<div data-role = "header">
+				<h1>Add Volunteer Event</h1>
+			</div>
+			<form>
+     			<label for="text-1">Name:</label>
+     			<input type="text" name="text-1" id="requirementname" value="">
+     		</form>
+
+     		<!-- <form>
+     			<label for="date-2">Deadline</label>
+     			<input type="date" data-clear-btn="true" name="date-2" id="deadline" value="">
+			</form> -->
+     		<form>
+     			<label for="text-1">Hours Done</label>
+     			<input type="text" name="text-1" id="HoursDone" value="">
+     		<form>
+    			<div data-role = "footer">
+        		<a class="ui-btn ui-btn-inline" id="DoneButton">Done</a>
+   				</div>
+			</form>
+
+			<!-- <form>
+    			<fieldset data-role="controlgroup" data-type="horizontal">
+       			<button data-icon="home">Home</button>
+        
+			</form> -->
+		</div>
+	<!-- End of add event page -->
+
+	</body>
+</body>
+</html>
