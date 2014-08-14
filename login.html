@@ -3,17 +3,17 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.19/firebase.js"></script>
-	<script type="text/javascript" src="login.js"></script>
+	<script type="text/javascript" src="Users.js"></script>
+
 <head>
-	<!-- start login page -->
-	<title> VolunTrapp </title>
+	<title> Volunteer Challenge </title>
 	<style>
 		#logo{
 			padding-top: 30px;
 			padding-left: 10px;
 		}
-		#firstpageoflogin{
-			background-color: #CCFFFF;
+		#firstpage{
+			background-image: url("https://pbs.twimg.com/profile_images/3539262500/6da9e28d36dba55041d22bdfbf3a5f6f_400x400.png");
 		}
 		#text-6{
 		    width: 100%;
@@ -21,33 +21,34 @@
 		    -moz-box-sizing: border-box;
 		    -webkit-box-sizing: border-box;
 		}
+	
 		
 		</style>
 </head>
 
-<body style="height:800px;width:800px">
-	<div data-role = "page" id = "firstPageoflogin" >
-		
-		<h1><img src = "http://wowtrending.com/wp-content/uploads/cute-dog-pictures-2.jpg" id = "logo" width="150" height="150">VolunTrapp</h1>
+<body <div style="text-align : center;">
+	<div data-role = "page" id = "firstPage" >
+		<h1>Volunteer Challenge</h1>
+		<img class="centeredImage" src="http://novatravelclinic.com/wp-content/uploads/2014/04/Volunteering.gif">
 		<form>
 		<label for="text-6"></label>
      	<input type="text" name="text-6" id="Username" value="" placeholder="username">
      	<input type="password" id="Password" name="pwd" placeholder="password">
 		</form>
 		<div data-role = "main">
-			<a class = "ui-btn" href="#firstPageofhomepage" id="LoginButton">login</a>
+			<a class = "ui-btn" href="#firstPageofhomepage" id="LoginButton">Login</a>
 			<!-- <button id="LoginButton">login</button> -->
 		</div>
 
 		<div data-role = "main">
-				<a class = "ui-btn" href="#pagecreateaccount">create an account</a>
+				<a class = "ui-btn" href="#pagecreateaccount">Create An Account</a>
 			</div>
 		</div>
 	<!-- end of login page  -->
 	<!-- start of create an account page  -->
 		<div data-role = "page" id = "pagecreateaccount">
 			<div data-role = "header">
-				<h1>Creat an Account</h1>
+				<h1>Create an Account</h1>
 			</div>
 			<form>
      			<label for="text-1">First Name:</label>
@@ -67,10 +68,14 @@
 	</div>
 	<!-- end of create an account page  -->
 	<!-- Start of homepage -->
-		<div data-role = "page" id = "firstPageofhomepage">
+		<div data-role = "page" id = "firstPageofhomepage" onload = "showhours()">
 			<div data-role = "header">
-				<h1> The Givers </h1>
+				<h1> The Amazing Dashboard </h1>
 			</div>	
+			<div>
+				<p> Total Hours Left: </p>
+				<p id = "totalhours"> </p>
+			</div>
 			<div data-role = "footer">
 				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
 			</div>
