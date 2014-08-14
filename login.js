@@ -1,45 +1,75 @@
 var mylistofusers= new Firebase("https://crackling-fire-4161.firebaseio.com");
 var currentUserRef; 
 
-//mylistofusers.push({user:"dana",password:"hello"});
-//mylistofusers.push({user:"aisha",password:"salut"});
-
-
-
-function CheckLogin(){
-
-	console.log("inside CheckLogin");
-
-	//printing all the users and passwords
-	var userName=$("#Username").val();
-	var passWord=$("#Password").val();
-
-	mylistofusers.child(userName).once("value",function(snapshot){
-		var MyData=snapshot.val();
-			if (MyData.user_name == userName && MyData.pass_word == passWord){
-				console.log("correct user");
-				currentUserRef = mylistofusers.child(userName);
-			}
-	});
-	
-}
-
 $(function(){
-	$("#LoginButton").click(CheckLogin);
-	$("#SubmitButton").click(createAccount);
-	$("#DoneButton").click(AddEvent);
+	$("#LoginButton").click(loadDashFromLogin);
+	$("#SubmitButton").click(loadDashFromCreateAcct);
+	$("#DoneButton").click(loadDashFromAddEvent);
 });
 
-//var mylistofusers= new Firebase("https://crackling-fire-4161.firebaseio.com");
+function loadDashFromLogin(){
+	checkLogin(function() {
+		showHoursAndEvents(); 
+	});
+}
 
-//mylistofusers.push({user:"dana",password:"hello"});
-//mylistofusers.push({user:"aisha",password:"salut"});
+function loadDashFromCreateAcct(){
+	createAccount(function(){
+		showHoursAndEvents();	
+	});
+}
+
+function loadDashFromAddEvent(){
+	addEvent(showHoursAndEvents);
+}
 
 
+function checkLogin(callback){
 
-function createAccount(){
+	console.log("inside CheckLogin"); 
+	var userName=$("#Username").val();
+	var passWord=$("#Password").val();
+	
+	mylistofusers.once("value", function(snapshot){
+		var MyData=snapshot.val();
+		var found = 0;
+		var correctPassword = false;
+		for (var user in MyData) { 
+			var thisUser = MyData[user]; 
+			if (thisUser.user_name == userName){
+				found = 1; 	
+				console.log("they match");	
+				if (thisUser.pass_word == passWord){
+					console.log("set current user ref")
+					currentUserRef=mylistofusers.child(userName);
+					correctPassword = true;
+				}
+			}
+		}
 
-	console.log("inside CheckCreateAccount");
+					
+		
+		if (found==1){
+			console.log("found " + found);
+			if (correctPassword == true){
+				$.mobile.changePage( "#firstPageofhomepage", { transition: "slideup", changeHash: false });
+			}
+			//$("#LoginButton").attr("href", "#firstPageofhomepage");
+			//$("#currentPage").load("#firstPageofhomepage");
+			
+		}
+
+		callback();
+		
+	});
+	
+
+}
+	
+
+function createAccount(callback){
+
+	console.log("CreateAccount");
 
 	//printing all the users and passwords
 	var firstName = $("#FirstName").val();
@@ -48,11 +78,7 @@ function createAccount(){
 	var passWord = $("#pw").val();
 	var totalHours = $("#Goal").val();
 	//console.log("HI");
-	console.log($("#FirstName").val());
-	console.log($("#LastName").val());
-	console.log($("#UserName").val());
-	console.log($("#pw").val());
-	console.log($("#Goal").val());
+	
 	
 	
 
@@ -67,10 +93,17 @@ function createAccount(){
 	});	
 
 	currentUserRef = mylistofusers.child(userName);
+	
+	if(currentUserRef != null){
+		console.log("callback");
+		callback();
+	}
+
+	$.mobile.changePage( "#firstPageofhomepage", { transition: "slideup", changeHash: false });
 }
 
-function AddEvent(){
-	console.log("inside Checkadd");
+function addEvent(callback){
+	console.log("addEvent");
 	var eventName = $("#requirementname").val();
 	var eventHours = $("#HoursDone").val();
 
@@ -80,7 +113,7 @@ function AddEvent(){
 	});
  	eventsRef.child(eventName).update({
 		"event_hours" : eventHours,
-		"event_name": eventName
+		"event_name": eventName 
 	});
 
 	currentUserRef.once("value", function(snapshot){
@@ -89,10 +122,25 @@ function AddEvent(){
 		console.log(myHours);
 		myHours=myHours-eventHours;
 		currentUserRef.update({total_Hours: myHours});
-	});
 
+		callback();
+		$.mobile.changePage( "#firstPageofhomepage", { transition: "slideup", changeHash: false });
+	});
+	
+	/*currentUserRef.on("child_changed", function(snapshot){
+		var myHours = snapshot.val(); 
+		$("#TotHours").html("Total Hours Left: " + myHours + " hrs");
+		});*/
+
+	
 }
 
-
-
-
+function showHoursAndEvents(){
+	console.log("hi");
+	console.log(currentUserRef.child("total_Hours"));
+	currentUserRef.child("total_Hours").once("value", function(snapshot){
+		var myHours = snapshot.val();
+		console.log(" my hours " + myHours);
+		$("#TotHours").html("Total Hours Left: " + myHours + " hrs");
+	});
+}
