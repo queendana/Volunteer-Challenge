@@ -3,8 +3,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.19/firebase.js"></script>
-	<script type="text/javascript" src="Users.js"></script>
-
+	<script type="text/javascript" src="loginnewcopy.js"></script>
 <head>
 	<title> Voluntrapp </title>
 	<style>
@@ -31,20 +30,20 @@
 
 <body <div style="text-align : center;" >
 	<div data-role = "page" id = "firstPage" >
-		<h1>Voluntrapp</h1>
-		<img class="centeredImage" src="http://novatravelclinic.com/wp-content/uploads/2014/04/Volunteering.gif">
+		<h1> Voluntrapp</h1>
+		<img class = "centeredImage" src="http://novatravelclinic.com/wp-content/uploads/2014/04/Volunteering.gif">
 		<form>
 		<label for="text-6"></label>
      	<input type="text" name="text-6" id="Username" value="" placeholder="username">
      	<input type="password" id="Password" name="pwd" placeholder="password">
 		</form>
 		<div data-role = "main">
-			<a class = "ui-btn" href="#firstPageofhomepage" id="LoginButton">Log In</a>
+			<a class = "ui-btn" id="LoginButton">Login</a>
 			<!-- <button id="LoginButton">login</button> -->
 		</div>
 
 		<div data-role = "main">
-				<a href="#pagecreateaccount">Sign up for Voluntrapp?</a>
+				<a class = "ui-btn" href="#pagecreateaccount">Create An Account</a>
 			</div>
 		</div>
 	<!-- end of login page  -->
@@ -67,22 +66,28 @@
      			<input type="text" name="text-5" id="Goal" value="">
      		</form>
      		<div data-role = "main">
-				<a class = "ui-btn" href="#firstPageofhomepage" id="SubmitButton">Submit</a>
+				<a class = "ui-btn" id="SubmitButton">Submit</a>
 			</div>
 	</div>
 	<!-- end of create an account page  -->
 	<!-- Start of homepage -->
 		<div data-role = "page" id = "firstPageofhomepage" onload = "showhours()">
 			<div data-role = "header">
+				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
+				<a class = "ui-btn" href="#firstPageoflogin" id =  "logoutButton">Log Out</a>
 				<h1> The Amazing Dashboard </h1>
 			</div>	
 			<div>
-				<p> Total Hours Left: </p>
-				<p id = "totalhours"> </p>
+				<p id = "TotHours"></p>
 			</div>
-			<div data-role = "footer">
+			<div>
+				<ul data-role="listview" id="EventHistory" data-icon="check">
+					<li> Volunteering History: </li>
+				</ul>
+			</div>
+			<!-- <div data-role = "footer">
 				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
-			</div>
+			</div> -->
 		</div>
 	<!-- end of homepage -->
 	<!-- Start of add event page -->
@@ -96,7 +101,7 @@
      		</form>
 
      		<!-- <form>
-     			<label for="date-2">Deadline</label>
+     			<label for="date-2">Date</label>
      			<input type="date" data-clear-btn="true" name="date-2" id="deadline" value="">
 			</form> -->
      		<form>
@@ -104,7 +109,7 @@
      			<input type="text" name="text-1" id="HoursDone" value="">
      		<form>
     			<div data-role = "footer">
-        		<a href="#firstPageofhomepage" class="ui-btn ui-btn-inline" id="DoneButton">Done</a>
+        		<a class="ui-btn ui-btn-inline" id="DoneButton">Done</a>
    				</div>
 			</form>
 
