@@ -3,84 +3,207 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.19/firebase.js"></script>
-	<script type="text/javascript" src="loginnewcopy.js"></script>
+	<script type="text/javascript" src="loginnew.js"></script>
 <head>
-	<title> Voluntrapp </title>
-	<style>
-		#logo{
-			padding-top: 30px;
-			padding-left: 10px;
-		}
-		#firstpage{
-			background-image: url("https://pbs.twimg.com/profile_images/3539262500/6da9e28d36dba55041d22bdfbf3a5f6f_400x400.png");
-		}
-		#text-6{
-		    width: 100%;
-		    box-sizing: border-box;
-		    -moz-box-sizing: border-box;
-		    -webkit-box-sizing: border-box;
-		}
-		#firstPageofhomepage{
-			background-image: url('http://b68389.medialib.glogster.com/media/8ea5a3ea68d4305ad02c946510f0674e579eeacbcd5665e33632c33205ec0137/moving-backgrounds-1.gif');
-		}
+	<!-- start login page -->
+	
+<style>
+#pagecreateaccount{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background-image: url(http://cdn1.valuewalk.com/wp-content/uploads/2014/02/volunteering.jpg);
+	background-size: cover;
+}
+.header{
+	position: absolute;
+	top: calc(40% - 35px);
+	left: calc(45% - 255px);
+	z-index: 2;	
+	float: left;
+	color: #fff;
+	font-family: Andale Mono, sans-serif;
+	font-size: 80px;
+	font-weight: 600;
+}
+		
+#hi
+	{
+	position:absolute;
+	left:350px;
+	top:450px;
+	
+}
+#firstpageoflogin{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background-image: url(https://wejungo.files.wordpress.com/2011/04/volunteer-program.png);
+	background-size: cover;
+}
+.header2{
+	position:absolute;
+	left:200px;
+	top:100px;
+	z-index: 2;	
+	float: left;
+	color: #fff;
+	font-family: Andale Mono, sans-serif;
+	font-size: 80px;
+	font-weight: 600;
+}
+#bye
+	{
+	position:absolute;
+	left:350px;
+	top:225px;
+}
+#firstPageofhomepage{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background-image: url(http://cvs-bg.org/wp-content/uploads/2012/05/baner2_00188.jpg);
+	background-size: cover;
+}
+.header3{
+	position:absolute;
+	left:350px;
+	top:50px;
+	z-index: 2;	
+	float: left;
+	color: #fff;
+	font-family: Andale Mono, sans-serif;
+	font-size: 40px;
+	font-weight: 300;
+}
+#ok
+	{
+	position:absolute;
+	left:350px;
+	top:100px;
+}
+#no
+	{
+	position:absolute;
+	left:150px;
+	top:150px;
+}
+#pageaddvolunteerevent{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background-image: url(https://www.berksarl.org/wp-content/uploads/2014/01/volunteer.jpg);
+	background-size: cover;
+}
+.header4{
+	position:absolute;
+	left:350px;
+	top:100px;
+	z-index: 2;	
+	float: left;
+	color: #fff;
+	font-family: Andale Mono, sans-serif;
+	font-size: 40px;
+	font-weight: 300;
+}
+#add
+	{
+	position:absolute;
+	left:350px;
+	top:200px;
+}
+#done
+	{
+	position:absolute;
+	left:350px;
+	top:400px;
+}
 	
 		
-		</style>
+</style>
 </head>
 
-<body <div style="text-align : center;" >
-	<div data-role = "page" id = "firstPage" >
-		<h1> Voluntrapp</h1>
-		<img class = "centeredImage" src="http://novatravelclinic.com/wp-content/uploads/2014/04/Volunteering.gif">
-		<form>
-		<label for="text-6"></label>
-     	<input type="text" name="text-6" id="Username" value="" placeholder="username">
-     	<input type="password" id="Password" name="pwd" placeholder="password">
-		</form>
-		<div data-role = "main">
-			<a class = "ui-btn" id="LoginButton">Login</a>
-			<!-- <button id="LoginButton">login</button> -->
+<body >
+ 
+	<div data-role = "page" id = "firstPageoflogin" >
+		
+		<div class="header">
+			<div> VolunTrapp </div>
 		</div>
-
-		<div data-role = "main">
-				<a class = "ui-btn" href="#pagecreateaccount">Create An Account</a>
+		
+		<form id = "hi" style="width:500px;height:500px">
+			<label for="text-6"></label>
+	     	<input type="text" name="text-6" id="Username" value="" placeholder="username">
+	     	<input type="password" id="Password" name="pwd" placeholder="password">
+			
+			<div data-role = "main">
+				<a class = "ui-btn" id="LoginButton">Log in</a>
+				<!-- <button id="LoginButton">login</button> -->
 			</div>
-		</div>
+
+			<div data-role = "main">
+					<a class = "ui-btn" href="#pagecreateaccount">Create an Account</a>
+				</div>
+		</form>
+	</div>
+		
 	<!-- end of login page  -->
 	<!-- start of create an account page  -->
 		<div data-role = "page" id = "pagecreateaccount">
-			<div data-role = "header">
-				<h1>Create an Account</h1>
-				<img src="http://gifrific.com/wp-content/uploads/2012/04/i-volunteer.gif">
+			<div class="header2">
+				<div> Create An Account </div>
 			</div>
-			<form>
-     			<label for="text-1">First Name:</label>
+			<form id = "bye" style="width:500px;height:500px">
+     			<label for="text-1" style="color:white">First Name:</label>
      			<input type="text" name="text-1" id="FirstName" value="">
-     			<label for="text-2">Last Name:</label>
+     			<label for="text-2" style="color:white">Last Name:</label>
      			<input type="text" name="text-2" id="LastName" value="">
-     			<label for="text-3">Username:</label>
+     			<label for="text-3" style="color:white">Username:</label>
      			<input type="text" name="text-3" id="UserName" value="">
-     			<label for="text-4">Password:</label>
+     			<label for="text-4" style="color:white">Password:</label>
      			<input type="text" name="text-4" id="pw" value="">
-     			<label for="text-5">Total Goal Hours:</label>
+     			<label for="text-5" style="color:white">Total Goal Hours:</label>
      			<input type="text" name="text-5" id="Goal" value="">
-     		</form>
-     		<div data-role = "main">
-				<a class = "ui-btn" id="SubmitButton">Submit</a>
-			</div>
+	     		<div data-role = "main">
+					<a class = "ui-btn" id="SubmitButton">Submit</a>
+				</div>
+			</form>
 	</div>
 	<!-- end of create an account page  -->
 	<!-- Start of homepage -->
 		<div data-role = "page" id = "firstPageofhomepage" onload = "showhours()">
-			<div data-role = "header">
+		<!-- 	<div data-role = "header">
 				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
 				<a class = "ui-btn" href="#firstPageoflogin" id =  "logoutButton">Log Out</a>
 				<h1> The Amazing Dashboard </h1>
-			</div>	
-			<div>
-				<p id = "TotHours"></p>
+			</div>	 -->
+			<div class="header3">
+				<div> THE AMAZING DASHBOARD </div>
 			</div>
-			<div>
+			<div data-role="navbar" id = "ok" style="width:500px;height:500px">
+			    <ul>
+			        <li><a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a></li>
+			        <li><a class = "ui-btn" href="#firstPageoflogin" id =  "logoutButton">Log Out</a></li>
+			    </ul>
+			</div><!-- /navbar -->
+			<div id = "no">
+				<p id = "TotHours"></p>
 				<ul data-role="listview" id="EventHistory" data-icon="check">
 					<li> Volunteering History: </li>
 				</ul>
@@ -92,26 +215,27 @@
 	<!-- end of homepage -->
 	<!-- Start of add event page -->
 		<div data-role = "page" id = "pageaddvolunteerevent">
-			<div data-role = "header">
-				<h1>Add Volunteer Event</h1>
+			<div class="header4">
+				<div>Add Volunteer Event</div>
 			</div>
-			<form>
-     			<label for="text-1">Name:</label>
+			<form id = "add" style="width:500px;height:500px">
+     			<label for="text-1" style= "font-size:20px">Name:</label>
      			<input type="text" name="text-1" id="requirementname" value="">
-     		</form>
-
      		<!-- <form>
      			<label for="date-2">Date</label>
-     			<input type="date" data-clear-btn="true" name="date-2" id="deadline" value="">
-			</form> -->
-     		<form>
-     			<label for="text-1">Hours Done</label>
+     			<input type="date" data-clear-btn="true" name="date-2" id="date" value="">
+			</form>  -->
+     			<label for="text-1" style= "font-size:20px">Hours Done</label>
      			<input type="text" name="text-1" id="HoursDone" value="">
-     		<form>
-    			<div data-role = "footer">
-        		<a class="ui-btn ui-btn-inline" id="DoneButton">Done</a>
+     		</form>
+     		<form id = "done" style="width:500px;height:500px">
+    			<div data-role = "main">
+        		<a class="ui-btn ui-btn-inline" id="DoneButton" >Done</a>
+        		<a class="ui-btn ui-btn-inline"  href = "#firstPageofhomepage" id="CancelButton">Cancel</a>
    				</div>
 			</form>
+			
+			
 
 			<!-- <form>
     			<fieldset data-role="controlgroup" data-type="horizontal">
