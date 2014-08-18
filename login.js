@@ -1,10 +1,14 @@
-var mylistofusers= new Firebase("https://crackling-fire-4161.firebaseio.com");
+var mylistofusers= new Firebase("https://resplendent-inferno-9479.firebaseio.com/");
 var currentUserRef; 
+var eventsRef;
+
 
 $(function(){
 	$("#LoginButton").click(loadDashFromLogin);
 	$("#SubmitButton").click(loadDashFromCreateAcct);
 	$("#DoneButton").click(loadDashFromAddEvent);
+	$("#logoutButton").click(Logout);
+	$("#CancelButton").click(CancelAddEvent);
 });
 
 function loadDashFromLogin(){
@@ -106,12 +110,14 @@ function addEvent(callback){
 	console.log("addEvent");
 	var eventName = $("#requirementname").val();
 	var eventHours = $("#HoursDone").val();
+	//var DateEvent = $("#date").val();
 
-	var eventsRef = currentUserRef.child("Events");
-	eventsRef.update({
-		description: "events completed by this user"
-	});
+	eventsRef = currentUserRef.child("Events");
+	//eventsRef.update({
+		//description: "events completed by this user"
+	//});
  	eventsRef.child(eventName).update({
+ 		//"event_date" : DateEvent,
 		"event_hours" : eventHours,
 		"event_name": eventName 
 	});
@@ -120,12 +126,25 @@ function addEvent(callback){
 		var MyData=snapshot.val();
 		var myHours = MyData.total_Hours;
 		console.log(myHours);
+		
 		myHours=myHours-eventHours;
+		
 		currentUserRef.update({total_Hours: myHours});
 
 		callback();
 		$.mobile.changePage( "#firstPageofhomepage", { transition: "slideup", changeHash: false });
 	});
+
+	// console.log("hello change the list please");
+	// eventsRef.on('child_added', function (snapshot) {
+ //  		var NewEvent = snapshot.val();
+ //  		var NewName = NewEvent.event_name;
+ //  		var NewHours = NewEvent.event_hours;
+ //  		$("#EventHistory").append("<li>" + NewEvent + NewHours + "hours </li>" );
+ //  		//FIX THIS
+	// })
+
+	}
 	
 	/*currentUserRef.on("child_changed", function(snapshot){
 		var myHours = snapshot.val(); 
@@ -133,7 +152,7 @@ function addEvent(callback){
 		});*/
 
 	
-}
+
 
 function showHoursAndEvents(){
 	console.log("hi");
@@ -141,6 +160,42 @@ function showHoursAndEvents(){
 	currentUserRef.child("total_Hours").once("value", function(snapshot){
 		var myHours = snapshot.val();
 		console.log(" my hours " + myHours);
-		$("#TotHours").html("Total Hours Left: " + myHours + " hrs");
+		if(myHours<=0){
+			$("#TotHours").html("Extra Hours Done: " + myHours*-1 + " hrs");
+		}
+		else{
+			$("#TotHours").html("Total Hours Left: " + myHours + " hrs" );
+		}
+		
 	});
+
+	currentUserRef.child("Events").once("value", function(snapshot){
+		$("#EventHistory").html();
+		var Eventlist = snapshot.val();
+		//console.log(Eventlist);
+		for (i in Eventlist){
+			var eRef = currentUserRef.child("Events");
+			eRef.child(i).once("value", function(snapshot){
+			var eventValue = snapshot.val();
+			var listnameEvent = eventValue.event_name;
+			//var newdate = eventValue.event_date;
+			var newHours = eventValue.event_hours;
+			$("#EventHistory").append("<li class='ui-li-static ui-body-inherit ui-first-child ui-last-child'>" + listnameEvent + " for " + newHours + " hours </li>" );
+
+		});	
+
+		}
+	});
+	//take snapshot of events 
+	//clear html from list view
+	//add all events to listview
+	//refresh
 }
+
+function Logout(){
+	$.mobile.changePage("#firstPageoflogin", { transition: "slideup", changeHash: false});
+}
+function CancelAddEvent(){
+	$.mobile.changePage("#firstPageofhomepage", { transition: "slideup", changeHash: false});
+}
+
