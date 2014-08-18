@@ -3,239 +3,100 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.19/firebase.js"></script>
-	<script type="text/javascript" src="loginnew.js"></script>
+	<script type="text/javascript" src="login.js"></script>
 <head>
 	<!-- start login page -->
-	
-<style>
-#pagecreateaccount{
-	position: absolute;
-	top: -20px;
-	left: -20px;
-	right: -40px;
-	bottom: -40px;
-	width: auto;
-	height: auto;
-	background-image: url(http://cdn1.valuewalk.com/wp-content/uploads/2014/02/volunteering.jpg);
-	background-size: cover;
-}
-.header{
-	position: absolute;
-	top: calc(40% - 35px);
-	left: calc(45% - 255px);
-	z-index: 2;	
-	float: left;
-	color: #fff;
-	font-family: Andale Mono, sans-serif;
-	font-size: 80px;
-	font-weight: 600;
-}
-		
-#hi
-	{
-	position:absolute;
-	left:350px;
-	top:450px;
-	
-}
-#firstpageoflogin{
-	position: absolute;
-	top: -20px;
-	left: -20px;
-	right: -40px;
-	bottom: -40px;
-	width: auto;
-	height: auto;
-	background-image: url(https://wejungo.files.wordpress.com/2011/04/volunteer-program.png);
-	background-size: cover;
-}
-.header2{
-	position:absolute;
-	left:200px;
-	top:100px;
-	z-index: 2;	
-	float: left;
-	color: #fff;
-	font-family: Andale Mono, sans-serif;
-	font-size: 80px;
-	font-weight: 600;
-}
-#bye
-	{
-	position:absolute;
-	left:350px;
-	top:225px;
-}
-#firstPageofhomepage{
-	position: absolute;
-	top: -20px;
-	left: -20px;
-	right: -40px;
-	bottom: -40px;
-	width: auto;
-	height: auto;
-	background-image: url(http://cvs-bg.org/wp-content/uploads/2012/05/baner2_00188.jpg);
-	background-size: cover;
-}
-.header3{
-	position:absolute;
-	left:350px;
-	top:50px;
-	z-index: 2;	
-	float: left;
-	color: #fff;
-	font-family: Andale Mono, sans-serif;
-	font-size: 40px;
-	font-weight: 300;
-}
-#ok
-	{
-	position:absolute;
-	left:350px;
-	top:100px;
-}
-#no
-	{
-	position:absolute;
-	left:150px;
-	top:150px;
-}
-#pageaddvolunteerevent{
-	position: absolute;
-	top: -20px;
-	left: -20px;
-	right: -40px;
-	bottom: -40px;
-	width: auto;
-	height: auto;
-	background-image: url(https://www.berksarl.org/wp-content/uploads/2014/01/volunteer.jpg);
-	background-size: cover;
-}
-.header4{
-	position:absolute;
-	left:350px;
-	top:100px;
-	z-index: 2;	
-	float: left;
-	color: #fff;
-	font-family: Andale Mono, sans-serif;
-	font-size: 40px;
-	font-weight: 300;
-}
-#add
-	{
-	position:absolute;
-	left:350px;
-	top:200px;
-}
-#done
-	{
-	position:absolute;
-	left:350px;
-	top:400px;
-}
+	<title> VolunTrapp </title>
+	<style>
+		#logo{
+			padding-top: 30px;
+			padding-left: 10px;
+		}
+		#firstpageoflogin{
+			background-color: #CCFFFF;
+		}
 	
 		
-</style>
+		</style>
 </head>
 
-<body >
- 
+<body style="height:800px;width:800px">
 	<div data-role = "page" id = "firstPageoflogin" >
 		
-		<div class="header">
-			<div> VolunTrapp </div>
-		</div>
-		
-		<form id = "hi" style="width:500px;height:500px">
-			<label for="text-6"></label>
-	     	<input type="text" name="text-6" id="Username" value="" placeholder="username">
-	     	<input type="password" id="Password" name="pwd" placeholder="password">
-			
-			<div data-role = "main">
-				<a class = "ui-btn" id="LoginButton">Log in</a>
-				<!-- <button id="LoginButton">login</button> -->
-			</div>
-
-			<div data-role = "main">
-					<a class = "ui-btn" href="#pagecreateaccount">Create an Account</a>
-				</div>
+		<h1><img src = "http://wowtrending.com/wp-content/uploads/cute-dog-pictures-2.jpg" id = "logo" width="150" height="150">VolunTrapp</h1>
+		<form>
+		<label for="text-6"></label>
+     	<input type="text" name="text-6" id="Username" value="" placeholder="username">
+     	<input type="password" id="Password" name="pwd" placeholder="password">
 		</form>
-	</div>
-		
+		<div data-role = "main">
+			<a class = "ui-btn" href="#firstPageofhomepage" id="LoginButton">Login</a>
+			<!-- <button id="LoginButton">login</button> -->
+		</div>
+
+		<div data-role = "main">
+				<a class = "ui-btn" href="#pagecreateaccount">Create An Account</a>
+			</div>
+		</div>
 	<!-- end of login page  -->
 	<!-- start of create an account page  -->
 		<div data-role = "page" id = "pagecreateaccount">
-			<div class="header2">
-				<div> Create An Account </div>
+			<div data-role = "header">
+				<h1>Create an Account</h1>
 			</div>
-			<form id = "bye" style="width:500px;height:500px">
-     			<label for="text-1" style="color:white">First Name:</label>
+			<form>
+     			<label for="text-1">First Name:</label>
      			<input type="text" name="text-1" id="FirstName" value="">
-     			<label for="text-2" style="color:white">Last Name:</label>
+     			<label for="text-2">Last Name:</label>
      			<input type="text" name="text-2" id="LastName" value="">
-     			<label for="text-3" style="color:white">Username:</label>
+     			<label for="text-3">Username:</label>
      			<input type="text" name="text-3" id="UserName" value="">
-     			<label for="text-4" style="color:white">Password:</label>
+     			<label for="text-4">Password:</label>
      			<input type="text" name="text-4" id="pw" value="">
-     			<label for="text-5" style="color:white">Total Goal Hours:</label>
+     			<label for="text-5">Total Goal Hours:</label>
      			<input type="text" name="text-5" id="Goal" value="">
-	     		<div data-role = "main">
-					<a class = "ui-btn" id="SubmitButton">Submit</a>
-				</div>
-			</form>
+     		</form>
+     		<div data-role = "main">
+				<a class = "ui-btn" href="#firstPageofhomepage" id="SubmitButton">Submit</a>
+			</div>
 	</div>
 	<!-- end of create an account page  -->
 	<!-- Start of homepage -->
 		<div data-role = "page" id = "firstPageofhomepage" onload = "showhours()">
-		<!-- 	<div data-role = "header">
-				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
-				<a class = "ui-btn" href="#firstPageoflogin" id =  "logoutButton">Log Out</a>
+			<div data-role = "header">
 				<h1> The Amazing Dashboard </h1>
-			</div>	 -->
-			<div class="header3">
-				<div> THE AMAZING DASHBOARD </div>
+			</div>	
+			<div>
+				<p> Total Hours Left: </p>
+				<p id = "totalhours"> </p>
 			</div>
-			<div data-role="navbar" id = "ok" style="width:500px;height:500px">
-			    <ul>
-			        <li><a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a></li>
-			        <li><a class = "ui-btn" href="#firstPageoflogin" id =  "logoutButton">Log Out</a></li>
-			    </ul>
-			</div><!-- /navbar -->
-			<div id = "no">
-				<p id = "TotHours"></p>
-				<ul data-role="listview" id="EventHistory" data-icon="check">
-					<li> Volunteering History: </li>
-				</ul>
-			</div>
-			<!-- <div data-role = "footer">
+			<div data-role = "footer">
 				<a class = "ui-btn" href="#pageaddvolunteerevent">Add Volunteer Event</a>
-			</div> -->
+			</div>
 		</div>
 	<!-- end of homepage -->
 	<!-- Start of add event page -->
 		<div data-role = "page" id = "pageaddvolunteerevent">
-			<div class="header4">
-				<div>Add Volunteer Event</div>
+			<div data-role = "header">
+				<h1>Add Volunteer Event</h1>
 			</div>
-			<form id = "add" style="width:500px;height:500px">
-     			<label for="text-1" style= "font-size:20px">Name:</label>
+			<form>
+     			<label for="text-1">Name:</label>
      			<input type="text" name="text-1" id="requirementname" value="">
-     		<!-- <form>
-     			<label for="date-2">Date</label>
-     			<input type="date" data-clear-btn="true" name="date-2" id="date" value="">
-			</form>  -->
-     			<label for="text-1" style= "font-size:20px">Hours Done</label>
-     			<input type="text" name="text-1" id="HoursDone" value="">
      		</form>
-     		<form id = "done" style="width:500px;height:500px">
-    			<div data-role = "main">
-        		<a class="ui-btn ui-btn-inline" id="DoneButton" >Done</a>
-        		<a class="ui-btn ui-btn-inline"  href = "#firstPageofhomepage" id="CancelButton">Cancel</a>
+
+     		<!-- <form>
+     			<label for="date-2">Deadline</label>
+     			<input type="date" data-clear-btn="true" name="date-2" id="deadline" value="">
+			</form> -->
+     		<form>
+     			<label for="text-1">Hours Done</label>
+     			<input type="text" name="text-1" id="HoursDone" value="">
+     		<form>
+    			<div data-role = "footer">
+        		<a href="#firstPageofhomepage" class="ui-btn ui-btn-inline" id="DoneButton">Done</a>
    				</div>
 			</form>
-			
-			
 
 			<!-- <form>
     			<fieldset data-role="controlgroup" data-type="horizontal">
